@@ -1,0 +1,11 @@
+.headboard {
+    background-color: #435d7d;
+    color: #fff;
+}
+body, table {
+    color: #566787 !important;
+}
+button {
+    background-color: #5cb85c !important;
+    color: #fff !important;
+}
