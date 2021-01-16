@@ -5,16 +5,16 @@ const formulario = document.getElementById('form-pet');
 const btn = document.getElementById('btn');
 
 
-const registerPet = (e) => {
+const registerUser = (e) => {
     e.preventDefault() 
     spinner.classList.add('d-inline-block');
     spinner.classList.remove('d-none');        
-    fetch(base + '/pets.json', {
+    fetch(base + '/pet.json', {
         method: 'POST',
         headers: {
-            'Content-Type' : 'Aplicación / json'
+            'Content-Type' : 'Application/json'
         },
-        body: JSON.stringify(crearObjeto())
+        body: JSON.stringify(createObject())
     })
     .then(response => {
         response.json();
@@ -29,4 +29,25 @@ const registerPet = (e) => {
     .catch(error => error)  
       
 }
-formulario.addEventListener('click', registerPet);
+btn.addEventListener('click', registerUser);
+
+const getPet = () => {
+    fetch(base + '/pet/' + idAModificar + '.json')
+        .then(response => {
+            return response.json()
+
+        })
+        .then(data => {
+            
+            document.getElementById('name').value = data.name;
+            document.getElementById('email').value = data.email;
+            document.getElementById('direction').value = data.direction;
+            document.getElementById('telephone').value = data.telephone;
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+                keyboard: false
+            })
+            myModal.show()  
+        })
+        .catch(error => console.log(error))
+}
+getPet()
