@@ -36,27 +36,27 @@
                 <div class="col-11">
                 <div id="error"></div>
                 <div class="mb-3">
-                    <label for="animal" class="form-label">Animal</label>
-                    <input type="text" class="form-control" id="animal" placeholder="Escriba el animal" aria-describedby="animal">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Write your name..." aria-describedby="name">
                 </div>
                 <div class="mb-3" id="errornombre">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Escriba el nombre de su animal" id="nombre">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="Write your email..." id="email">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="raza">Telefono</label>
-                    <input type="tel" class="form-control" id="raza">              
+                    <label class="form-label" for="direction">Direction</label>
+                    <input type="text" class="form-control" placeholder="Write your direction..." id="direction">              
                 </div>
                 <div class="mb-3" id="erroremail"> 
-                    <label class="form-label" for="email">Email</label>
-                    <input type="text" class="form-control" id="email">              
+                    <label class="form-label" for="telephone">Telephone</label>
+                    <input type="tel" class="form-control" placeholder="Write your telephone..." id="telephone">              
                 </div>             
                 </div>
             </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button id="btn" type="submit" class="btn btn-primary">
-                Cargar
+                  Add
                 <div class="spinner-border text-light d-none spinner-border-sm ms-4" id="spinner" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
@@ -67,14 +67,23 @@
         </div>
       </div>
       </section>
+      <section class="row d-flex justify-content-md-end">
+        <div class="col-9 col-md-3 ">
+          <label></label>
+          <input type="text" class="form-control" placeholder="Filter..." id="filter">
+        </div>
+        <div class="col-1 mt-4">
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </section>
       <section>
         <table id="table-pet" class="table">
             <thead>
               <tr>
-                <th scope="col">Nombre</th>
+                <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">Telefono</th>
+                <th scope="col">Direction</th>
+                <th scope="col">Telephone</th>
               </tr>
             </thead>
             <tbody id="tbody">
