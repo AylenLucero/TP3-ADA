@@ -1,5 +1,6 @@
 const tabla = document.getElementById('tbody')
 
+
 const createTable = () =>{
 fetch(base + '/pet.json')
 .then(response => response.json())
@@ -30,12 +31,12 @@ fetch(base + '/pet.json')
         tbody.appendChild(tr);
 
         //DELETE
-        const buttonDelete = document.createElement('button');
+        const buttonDelete = document.createElement('a');
         buttonDelete.classList.add('btn');
         buttonDelete.setAttribute('id', 'delete');
         buttonDelete.innerHTML = '<i class="fa fa-trash " aria-hidden="true"> </i> Delete';
         const td = document.createElement('td');
-        // buttonDelete.addEventListener('click', deletePet)
+        buttonDelete.setAttribute('href', 'index.html?name=' + prop + '&accion=delete');
         td.appendChild(buttonDelete);
         tr.appendChild(td);
 
@@ -54,3 +55,18 @@ fetch(base + '/pet.json')
 })
 }
 createTable()
+
+const deletePet = () => {
+
+    fetch(base + '/pet/' + idAModificar + '.json', {
+        method: 'DELETE',
+    })
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            alert('Su usuario fue eliminado exitosamente')
+            window.location = 'index.html'            
+        })
+        .catch(error => console.log(error))
+}
