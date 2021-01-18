@@ -1,5 +1,6 @@
 const url = new URL(window.location);
 const idAModificar = url.searchParams.get('name');
+const idAccion = url.searchParams.get('accion');
 
 const formulario = document.getElementById('form-pet');
 const btn = document.getElementById('btn');
@@ -39,10 +40,13 @@ const getPet = () => {
             return response.json()
 
         })
-        .then(data => {       
-            if(idAModificar) {
+        .then(data => { 
+            if(idAccion!=='delete') {     
+            if(idAModificar) {                
                 btnUpdate.removeAttribute('hidden');
                 btn.setAttribute('hidden', 'true');
+                const titleModal = document.getElementById('exampleModalLabel');
+                titleModal.innerHTML = 'Edit Employee'
             }    
             document.getElementById('name').value = data.name;
             document.getElementById('email').value = data.email;
@@ -53,17 +57,18 @@ const getPet = () => {
                 keyboard: false
             })
             myModal.show() 
+            } else {
+                deletePet();
+            }
              
         })
         .catch(error => console.log(error))
 }
-getPet()
+getPet() 
 
 const updatePet = (e) => {    
-    e.preventDefault()
-
+    e.preventDefault(); 
     
-    console.log('aca')
     fetch(base + '/pet/' + idAModificar + '.json', {
         method: 'PATCH',
         headers: {
@@ -74,18 +79,11 @@ const updatePet = (e) => {
         .then(response => {
             return response.json()
         })
+        .then(data => {
+            window.location = 'index.html'
+        })
         .catch(error => console.log(error))
 }
 
 btn.addEventListener('click', registerUser);
 btnUpdate.addEventListener('click', updatePet);
-// if (idAModificar) {
-//     btn.innerHTML = 'Update';
-//     btn.addEventListener('submit', updatePet);
-// } else {
-//     btn.addEventListener('submit', registerUser)
-// }
-
-// const EventClick = (x) => {
-//     btn.addEventListener('click', x);
-// }
