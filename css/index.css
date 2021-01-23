@@ -1,3 +1,7 @@
+body {
+    font-family: 'Varela Round', sans-serif;
+    background-color: #fafafa;
+}
 .headboard {
     background-color: #435d7d;
     color: #fff;
@@ -8,4 +12,11 @@ body, table {
 button {
     background-color: #5cb85c !important;
     color: #fff !important;
+}
+button:hover {
+    background-color: #4c964c !important;
+}
+.input {
+    background-color: rgba(255, 71, 71, 0.644);
+    border: solid 2px red;
 }
