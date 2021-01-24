@@ -71,17 +71,14 @@ const filter = (event) => {
                 loadTable('tbl-users', filteredData);
             }
             SeefullTable('fullTable');
-        })
+        })        
 }
 
 filterButton.addEventListener('click', filter);
 
-const SeefullTable = (id) => {
-    const fullTable = document.getElementById(id);
-    const btnSeeFullTable = document.createElement('button');
-    btnSeeFullTable.setAttribute('class', 'btn');
-    btnSeeFullTable.innerHTML = 'See full table';
-    fullTable.appendChild(btnSeeFullTable);
+const SeefullTable = () => {
+    const btnSeeFullTable = document.getElementById('btnSeeFullTable');
+    btnSeeFullTable.removeAttribute('hidden')
     btnSeeFullTable.addEventListener('click', () => {
         close()
     });

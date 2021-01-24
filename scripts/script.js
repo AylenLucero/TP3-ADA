@@ -5,10 +5,10 @@ const base = 'https://ada-tp3-default-rtdb.firebaseio.com';
 const createObject = () => {
     const expresionEmail = /\w+@\w+\.+[a-z]/;
     const expresionTelephone = /^\(?([0-9]{2,4})\)?[- ]?([0-9]{6,8})$/
-    const name = document.getElementById('fullname').value;
-    const email = document.getElementById('email').value;
-    const direction = document.getElementById('address').value;
-    const telephone = document.getElementById('phone').value;
+    const name = document.getElementById('fullname').value.toLowerCase();
+    const email = document.getElementById('email').value.toLowerCase();
+    const direction = document.getElementById('address').value.toLowerCase();
+    const telephone = document.getElementById('phone').value.toLowerCase();
     if((!expresionEmail.test(email)) || (!expresionTelephone.test(telephone)) || (name.length >= 50) || (direction.length >= 60))  {
         swal("Error!", "Some of your date is incorrectly completed", "error");
         if(!expresionTelephone.test(telephone)) {     
