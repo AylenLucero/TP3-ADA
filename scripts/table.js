@@ -60,17 +60,25 @@ const filter = (event) => {
     fetch(`${base}/users.json`)
         .then(response => response.json())
         .then(data => {
-            const inputFilter = document.getElementById('filter').value;
-            let filteredData = {}
+            const inputFilter = document.getElementById('filter').value.toLowerCase();
+            if(inputFilter<1) {
+                swal({
+                    text: "The search field is empty",
+                    icon: "warning",
+                    button: "Okay!",
+                  })
+            } else {
+                let filteredData = {}
+                
+                for (let objectId in data) {
 
-            for (let objectId in data) {
-
-                if (data[objectId].name.includes(inputFilter)) {
-                    filteredData[objectId] = data[objectId];
+                    if (data[objectId].name.includes(inputFilter)) {
+                        filteredData[objectId] = data[objectId];
+                    }
+                    loadTable('tbl-users', filteredData);
                 }
-                loadTable('tbl-users', filteredData);
+                SeefullTable('fullTable');
             }
-            SeefullTable('fullTable');
         })        
 }
 
